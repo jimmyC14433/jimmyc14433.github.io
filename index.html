@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Yimy Cristancho | Especialista en Ciberseguridad & Ingeniero de Sistemas</title>
+    <link rel="icon" href="icono.png">
+
+    <!-- Responsive Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Especialista Master en Ciberseguridad, Ingeniero de Sistemas, Pentester, Cloud Security (AWS) y Desarrollador. Portafolio profesional de Yimy Cristancho.">
+    <meta name="author" content="Yimy Cristancho">
+
+    <!-- Google Fonts & Stylesheets -->
+    <link rel="stylesheet" href="modern-style.css?v=1.2">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body id="home">
+
+    <!-- Sticky Navigation -->
+    <header class="cyber-header" id="cyber-header">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <img src="icono.png" alt="Yimy Cristancho Logo">
+                <span>YC</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link-cyber active">Inicio</a></li>
+                <li><a href="#sobremi" class="nav-link-cyber">Sobre Mí</a></li>
+                <li><a href="#skills" class="nav-link-cyber">Habilidades</a></li>
+                <li><a href="#experiencia" class="nav-link-cyber">Experiencia</a></li>
+                <li><a href="#proyectos" class="nav-link-cyber">Proyectos</a></li>
+                <li><a href="#estudios" class="nav-link-cyber">Estudios</a></li>
+                <li><a href="#contacto" class="nav-link-cyber">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <p class="hero-subtitle mono-text">// SECURITY PROTOCOL INITIALIZED</p>
+                    <h1 class="hero-title">Yimy <span data-decrypt="Cristancho">Cristancho</span></h1>
+                    <h2 class="mono-text" style="font-size: 1.25rem; color: var(--color-primary); font-weight: 500;">
+                        &gt; ESPECIALISTA EN SEGURIDAD INFORMÁTICA
+                    </h2>
+                    <p class="hero-description">
+                        Especialista en Seguridad Informática enfocado en el diseño e implementación de estrategias para robustecer, mitigar riesgos y garantizar la resiliencia de infraestructuras críticas.
+                    </p>
+                    
+                    <div class="hero-tags">
+                        <span class="hero-tag">#Cybersecurity</span>
+                        <span class="hero-tag">#Pentesting</span>
+                        <span class="hero-tag">#AWSCloud</span>
+                        <span class="hero-tag">#Infrastructure</span>
+                        <span class="hero-tag">#SecOps</span>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="#contacto" class="btn-cyber-solid">
+                            <i data-lucide="terminal" style="width: 18px; height: 18px;"></i>
+                            Contactar
+                        </a>
+                        <a href="#proyectos" class="btn-cyber-outline-large">
+                            <i data-lucide="code" style="width: 18px; height: 18px;"></i>
+                            Proyectos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="terminal-mockup">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="terminal-dot red"></span>
+                                <span class="terminal-dot yellow"></span>
+                                <span class="terminal-dot green"></span>
+                            </div>
+                            <span class="terminal-title">sec-profile.sh — bash</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="terminal-input"><span class="terminal-input-code">./profile.sh --status</span></span>
+                                <div class="terminal-output">
+                                    Cargando perfil profesional de Yimy...<br>
+                                    [+] Rol: Especialista Master en Ciberseguridad<br>
+                                    [+] Ubicación: Bogotá, Colombia<br>
+                                    [+] Enfoque: Blue Team / Red Teaming <br>
+                                    [+] Cert: AWS Practitioner & Qualys VM
+                                </div>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-input"><span class="terminal-input-code">cat quotes.txt</span></span>
+                                <div class="terminal-output" style="font-style: italic; color: #a855f7;">
+                                    "Intenta aprender algo sobre todo y todo sobre algo."<br>
+                                    — Thomas Huxley
+                                </div>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-input"><span class="terminal-input-code">ping -c 1 security_shield</span></span>
+                                <div class="terminal-output">
+                                    64 bytes from secure.yimy.io: icmp_seq=1 ttl=64 time=0.042 ms<br>
+                                    <span class="terminal-success">STATUS: SECURE_ENVIRONMENT</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="section" id="sobremi">
+            <div class="container">
+                <h2 class="section-title"><span>Sobre Mí</span></h2>
+                <div class="about-grid">
+                    <div class="about-image-wrapper">
+                        <div class="about-image-frame">
+                            <img src="IMG-COPY.jpg" alt="Yimy Cristancho">
+                        </div>
+                        <div class="about-glow-bg"></div>
+                    </div>
+
+                    <div class="about-text glass-card">
+                        <p class="about-intro">
+                            Profesional en Seguridad Informática y Ciberseguridad con más de 10 años de trayectoria consolidada en el sector de TI.
+                        </p>
+                        <p>
+                            Mi expertise se centra en la ejecución estratégica y el liderazgo técnico en actividades de seguridad defensiva y ofensiva, lo que me ha permitido impulsar la mejora de la postura de ciberseguridad en entornos corporativos, particularmente en el sector bancario y financiero.
+                        </p>
+                        <p>
+                            Soy reconocido por mi capacidad proactiva para analizar, gestionar, estructurar y definir procesos de seguridad y proyectos de infraestructura. Poseo una sólida habilidad para el análisis estratégico, la resolución de problemas
+                        </p>
+                        
+                        <div class="about-details">
+                            <div class="info-item">
+                                <span class="info-label">Ubicación</span>
+                                <span class="info-value">Bogotá, Colombia</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Email</span>
+                                <span class="info-value"><a href="mailto:jimmyc14433@gmail.com">jimmyc14433@gmail.com</a></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Idiomas</span>
+                                <span class="info-value">Español (Nativo) | Inglés (A2)</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Hoja de Vida</span>
+                                <span class="info-value"><a href="#contacto">Ver Info de Contacto</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills, Hobbies & Certifications -->
+        <section class="section" id="skills" style="background: rgba(10,15,30,0.3);">
+            <div class="container">
+                <h2 class="section-title"><span>Habilidades & Certificaciones</span></h2>
+                
+                <div class="skills-grid">
+                    <!-- Core Competencies -->
+                    <div class="skills-card glass-card">
+                        <h3>
+                            <i data-lucide="shield-check"></i>
+                            Ciberseguridad
+                        </h3>
+                        <div class="skills-list">
+                            <span class="skill-pill highlight">Seguridad Defensiva</span>
+                            <span class="skill-pill highlight">Seguridad Ofensiva</span>
+                            <span class="skill-pill">Infraestructura Crítica SOX & BIA</span>
+                            <span class="skill-pill">Análisis de Incidentes</span>
+                            <span class="skill-pill">Gestión de Vulnerabilidades</span>
+                            <span class="skill-pill">Hardening (SO & BD)</span>
+                            <span class="skill-pill">Normativa Circular 033</span>
+                            <span class="skill-pill">PCI DSS / ASV</span>
+                        </div>
+                    </div>
+
+                    <!-- Courses & Certs -->
+                    <div class="skills-card glass-card">
+                        <h3>
+                            <i data-lucide="award"></i>
+                            Cursos y Certificaciones
+                        </h3>
+                        <div class="courses-list">
+                            <div class="course-item">
+                                <span class="course-icon"><i data-lucide="check"></i></span>
+                                <span class="course-text">Architecting on AWS + Cloud Practitioner Essentials</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-icon"><i data-lucide="check"></i></span>
+                                <span class="course-text">Introduction to AWS Identity and Access Management (IAM)</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-icon"><i data-lucide="check"></i></span>
+                                <span class="course-text">AWS Security Fundamentals Second Edition</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-icon"><i data-lucide="check"></i></span>
+                                <span class="course-text">Web Security Learning (Portswigger Academy)</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-icon"><i data-lucide="check"></i></span>
+                                <span class="course-text">Qualys: Vulnerability Management Foundation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hobbies -->
+                    <div class="skills-card glass-card">
+                        <h3>
+                            <i data-lucide="compass"></i>
+                            Hobbies e Intereses
+                        </h3>
+                        <div class="courses-list">
+                            <div class="course-item">
+                                <span class="course-icon" style="color: var(--color-accent);"><i data-lucide="heart"></i></span>
+                                <span class="course-text"><strong>Deportes y Estilo de vida:</strong> Deportes para mantener una condición saludable, buscando la automejora y disciplina personal.</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-icon" style="color: var(--color-accent);"><i data-lucide="cpu"></i></span>
+                                <span class="course-text"><strong>Tecnología e Innovación:</strong> Desarrollo continuo de proyectos personales con impacto positivo.</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="course-icon" style="color: var(--color-accent);"><i data-lucide="book-open"></i></span>
+                                <span class="course-text"><strong>Formación Transversal:</strong> Aprendizaje continuo multidisciplinario para fomentar la creatividad.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline (Last 3 Jobs) -->
+        <section class="section" id="experiencia">
+            <div class="container">
+                <h2 class="section-title"><span>Experiencia Laboral</span></h2>
+                
+                <div class="timeline">
+                    <!-- Job 1: Michael Page / AVC -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card">
+                            <div class="timeline-header">
+                                <div class="timeline-title">
+                                    <h3>Especialista Master de Ciberseguridad</h3>
+                                    <div class="timeline-company">Michael Page / AVC</div>
+                                </div>
+                                <span class="timeline-date">Dic 2025 - Presente</span>
+                            </div>
+                            
+                            <div class="timeline-meta">
+                                <span class="meta-item">
+                                    <i data-lucide="phone"></i>
+                                    Ref: 7454500
+                                </span>
+                                <span class="meta-item">
+                                    <i data-lucide="shield"></i>
+                                    Especialista Master
+                                </span>
+                            </div>
+
+                            <p style="margin-bottom: 1.5rem;">
+                                Liderazgo y ejecución estratégica en seguridad informática y protección de infraestructura crítica en entornos corporativos.
+                            </p>
+
+                            <!-- Career path evolution within same company -->
+                            <div class="sub-role">
+                                <div class="sub-role-title">Ingeniero de Ciberseguridad</div>
+                                <div class="sub-role-date">Feb 2025 - Dic 2025</div>
+                                <p style="font-size: 0.9rem;">
+                                    Administración de consolas de seguridad corporativas, gestión técnica de alertas y despliegue de políticas preventivas en la organización.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job 2: Deloitte -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card">
+                            <div class="timeline-header">
+                                <div class="timeline-title">
+                                    <h3>Analista de Seguridad Risk Advisory | Nivel 3</h3>
+                                    <div class="timeline-company">Deloitte</div>
+                                </div>
+                                <span class="timeline-date">2 Años y 1 Mes</span>
+                            </div>
+                            
+                            <div class="timeline-meta">
+                                <span class="meta-item">
+                                    <i data-lucide="phone"></i>
+                                    Ref: 4262000
+                                </span>
+                                <span class="meta-item">
+                                    <i data-lucide="shield-alert"></i>
+                                    Risk Advisory N3
+                                </span>
+                            </div>
+
+                            <p>
+                                Asesoría técnica estratégica de riesgos de ciberseguridad, análisis proactivo de amenazas en sistemas empresariales, planes de mitigación y gestión del ciclo de vulnerabilidades en infraestructura.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Job 3: Espumas Santafé De Bogotá -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card">
+                            <div class="timeline-header">
+                                <div class="timeline-title">
+                                    <h3>Auxiliar de Tecnología</h3>
+                                    <div class="timeline-company">Espumas Santafé De Bogotá</div>
+                                </div>
+                                <span class="timeline-date">3 Años y 4 Meses</span>
+                            </div>
+                            
+                            <div class="timeline-meta">
+                                <span class="meta-item">
+                                    <i data-lucide="phone"></i>
+                                    Ref: 5187272
+                                </span>
+                                <span class="meta-item">
+                                    <i data-lucide="network"></i>
+                                    Infraestructura & Soporte
+                                </span>
+                            </div>
+
+                            <p>
+                                Supervisión y mantenimiento correctivo/preventivo de servidores, centros de datos y sistemas de cableado estructurado. Optimización de escalabilidad, rendimiento de redes, y aseguramiento de políticas básicas de seguridad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section" id="proyectos" style="background: rgba(10,15,30,0.3);">
+            <div class="container">
+                <h2 class="section-title"><span>Proyectos Clave</span></h2>
+                
+                <div class="projects-grid">
+                    <!-- Project 1: SIGEM -->
+                    <div class="project-card glass-card">
+                        <div class="project-card-header">
+                            <div class="project-icon">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                            <span class="project-status">Desplegado</span>
+                        </div>
+                        <h3>SIGEM — Sistema de Matrículas</h3>
+                        <p class="project-desc">
+                            Sistema de matrículas. Desarrollado como opcion de grado, diseñado para digitalizar y automatizar de manera ágil los procesos de inscripción escolar y matrículas académicas, facilitando la gestión para acudientes y la cordinación academica.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">PHP</span>
+                            <span class="tech-badge">MySQL</span>
+                        </div>
+                        <a href="https://sgmedu.000webhostapp.com/" target="_blank" rel="noopener" class="project-link-btn">
+                            Acceder al Sistema
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 2: Vulnerability Management System -->
+                    <div class="project-card glass-card">
+                        <div class="project-card-header">
+                            <div class="project-icon" style="border-color: var(--color-accent); background: rgba(139,92,246,0.06); color: var(--color-accent);">
+                                <i data-lucide="shield-alert"></i>
+                            </div>
+                            <span class="project-status development">Opción de Grado</span>
+                        </div>
+                        <h3>Gestión & Control de Vulnerabilidades</h3>
+                        <p class="project-desc">
+                            Proyecto de investigación académica y opción de grado centrado en el diseño y desarrollo de una plataforma interactiva para la centralización, clasificación y seguimiento continuo de vulnerabilidades corporativas. Permite orquestar flujos de trabajo de remediación y generar métricas de riesgo en tiempo real.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">TypeScript</span>
+                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">JSON</span>
+                            <span class="tech-badge">GitHub</span>
+                            <span class="tech-badge">bcrypt</span>
+                            <span class="tech-badge">Dashboard UX</span>
+                            <span class="tech-badge">Risk Scoring</span>
+                        </div>
+                        <span class="project-link-btn" style="color: var(--text-muted); cursor: not-allowed;">
+                            En Fase de Desarrollo (Tesis)
+                            <i data-lucide="lock" style="width: 16px; height: 16px;"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academic Studies & Achievements -->
+        <section class="section" id="estudios">
+            <div class="container">
+                <h2 class="section-title"><span>Estudios & Logros</span></h2>
+                
+                <h3 class="mono-text" style="font-size: 1.4rem; margin-bottom: 2rem; border-left: 3px solid var(--color-primary); padding-left: 1rem;">Estudios Académicos</h3>
+                <div class="academics-grid" style="margin-bottom: 5rem;">
+                    <!-- Specialization -->
+                    <div class="academic-card glass-card specialization">
+                        <div class="academic-type">Postgrado</div>
+                        <h3>Especialización en Seguridad Informática</h3>
+                        <p class="academic-institution">Corporación Universitaria Minuto de Dios</p>
+                        <div class="academic-year">
+                            <span class="year-tag highlight">Culminada en 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- System Engineer -->
+                    <div class="academic-card glass-card">
+                        <div class="academic-type">Pregrado</div>
+                        <h3>Ingeniería de Sistemas</h3>
+                        <p class="academic-institution">Universidad Minuto de Dios</p>
+                        <div class="academic-year">
+                            <span class="year-tag">Graduado en 2023</span>
+                        </div>
+                    </div>
+
+                    <!-- Technologist -->
+                    <div class="academic-card glass-card">
+                        <div class="academic-type">Tecnólogo</div>
+                        <h3>Redes de Telecomunicaciones</h3>
+                        <p class="academic-institution">Servicio Nacional de Aprendizaje (SENA)</p>
+                        <div class="academic-year">
+                            <span class="year-tag">2018</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Science Diplomado -->
+                    <div class="academic-card glass-card">
+                        <div class="academic-type">Diplomado</div>
+                        <h3>Diplomado en Ciencia de Datos</h3>
+                        <p class="academic-institution">Escuela Superior de Administración Pública</p>
+                        <div class="academic-year">
+                            <span class="year-tag">2022</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mono-text" style="font-size: 1.4rem; margin-bottom: 2rem; border-left: 3px solid var(--color-primary); padding-left: 1rem;">Logros Profesionales</h3>
+                <div class="logros-grid">
+                    <!-- Achievement 1 -->
+                    <div class="logro-card glass-card">
+                        <div class="logro-header">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3>Voluntariado y Trabajo Social</h3>
+                        <p>
+                            Participación y estructuración de proyectos de voluntariado, orientados a facilitar el acceso a herramientas digitales y capacitaciones en tecnología para comunidades vulnerables.
+                        </p>
+                    </div>
+
+                    <!-- Achievement 2 -->
+                    <div class="logro-card glass-card">
+                        <div class="logro-header" style="color: var(--color-accent);">
+                            <i data-lucide="presentation"></i>
+                        </div>
+                        <h3>Ponente en V Encuentro Universitario</h3>
+                        <p>
+                            Ponente nacional representando a la Universidad Minuto de Dios en el encuentro nacional enfocado en "Educación, Investigación y Transformación Social". Integrante activo de semillero de investigación.
+                        </p>
+                    </div>
+
+                    <!-- Achievement 3 -->
+                    <div class="logro-card glass-card">
+                        <div class="logro-header" style="color: var(--color-secondary);">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h3>Certificación DIAN — OEA</h3>
+                        <p>
+                            Implementación y auditoría de los estándares de seguridad física y lógica exigidos por la DIAN para la obtención exitosa de la certificación de Operador Económico Autorizado en la infraestructura tecnológica corporativa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact & Footer -->
+    <footer class="footer-section" id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <i data-lucide="shield" style="stroke: var(--color-primary); fill: rgba(0,242,254,0.05); width: 32px; height: 32px;"></i>
+                        <span>Yimy Cristancho</span>
+                    </div>
+                    <p>
+                        Especialista en Ciberseguridad enfocado en proteger entornos complejos y estructurar infraestructuras resilientes. Escríbeme o llámame directamente para coordinar reuniones profesionales.
+                    </p>
+                    
+                    <div class="footer-contact-details">
+                        <!-- Email Card -->
+                        <div class="contact-card" data-copy="jimmyc14433@gmail.com">
+                            <div class="contact-card-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">CORREO ELECTRÓNICO</span>
+                                <span class="contact-card-value">jimmyc14433@gmail.com</span>
+                            </div>
+                        </div>
+
+                        <!-- Phone Card -->
+                        <div class="contact-card" data-copy="3007179680">
+                            <div class="contact-card-icon">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">MÓVIL / CONTACTO</span>
+                                <span class="contact-card-value">3007179680 / 3243942094</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-social-wrapper">
+                    <span class="social-title">// REDES Y ENLACES</span>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/yimy-a-cristancho-a59016183/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="https://github.com/jimmyC14433" target="_blank" rel="noopener" class="social-icon-btn" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                        </a>
+                        <a href="https://www.instagram.com/yimy_cristancho12/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="https://www.google.com/maps?q=bogota" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Maps">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Yimy Cristancho. Todos los derechos reservados.</p>
+                <p class="mono-text" style="font-size: 0.75rem; color: rgba(255,255,255,0.25);">SYS_STATUS: SECURE_100%</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Clipboard Alert Toast -->
+    <div class="toast-msg" id="toast-msg">
+        <i data-lucide="check-circle-2"></i>
+        <span id="toast-text">Copiado al portapapeles</span>
+    </div>
+
+    <!-- Main JavaScript file -->
+    <script src="modern-script.js" defer></script>
+</body>
+</html>
