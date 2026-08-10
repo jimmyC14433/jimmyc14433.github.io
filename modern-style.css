@@ -193,16 +193,18 @@ p {
     font-family: var(--font-mono);
 }
 
-.logo img {
-    height: 38px;
-    width: 38px;
+.logo img, .logo svg {
+    height: 36px;
+    width: 36px;
     border-radius: 8px;
     border: 1.5px solid var(--color-primary);
     box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
     transition: var(--transition-smooth);
+    padding: 5px;
+    background: rgba(0, 242, 254, 0.05);
 }
 
-.logo:hover img {
+.logo:hover img, .logo:hover svg {
     transform: rotate(360deg);
     border-color: var(--color-accent);
     box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
