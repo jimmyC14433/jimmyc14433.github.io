@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             credlyCounter.textContent = `${badges.length} Insignias Verificadas`;
         }
 
+        credlyContainer.dataset.infiniteInit = "false";
         credlyContainer.innerHTML = badges.map(badge => {
             const dateStr = badge.issued_at_date ? formatDate(badge.issued_at_date) : '';
             return `
@@ -178,10 +179,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h4 class="credly-badge-name" title="${badge.name}">${badge.name}</h4>
                         <div class="credly-date">${dateStr}</div>
                     </div>
-                    <a href="${badge.badge_url}" target="_blank" rel="noopener" class="credly-verify-btn">
-                        Verificar en Credly
-                        <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
-                    </a>
+                    <span class="badge-status-pill">
+                        <i data-lucide="shield-check" style="width: 14px; height: 14px;"></i>
+                        Credencial Verificada
+                    </span>
                 </div>
             `;
         }).join('');
@@ -189,6 +190,133 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.lucide) {
             window.lucide.createIcons();
         }
+
+        setupInfiniteCarousel('credly-badges-grid', 'credly-prev', 'credly-next', 3800);
+    }
+
+    // 7. Infinite Loop Carousels Engine
+    function setupInfiniteCarousel(containerId, prevBtnId, nextBtnId, autoDelay = 4000) {
+        const container = document.getElementById(containerId);
+        const prevBtn = document.getElementById(prevBtnId);
+        const nextBtn = document.getElementById(nextBtnId);
+
+        if (!container) return;
+
+        // Prevent double init on same content
+        if (container.dataset.infiniteInit === "true") return;
+        container.dataset.infiniteInit = "true";
+
+        const originalCards = Array.from(container.children);
+        if (originalCards.length === 0) return;
+
+        // Triplicate children for seamless infinite wrap-around
+        const fragmentPre = document.createDocumentFragment();
+        const fragmentPost = document.createDocumentFragment();
+
+        originalCards.forEach(card => {
+            fragmentPre.appendChild(card.cloneNode(true));
+            fragmentPost.appendChild(card.cloneNode(true));
+        });
+
+        container.insertBefore(fragmentPre, container.firstChild);
+        container.appendChild(fragmentPost);
+
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+
+        const getSingleSetWidth = () => container.scrollWidth / 3;
+
+        const getStepWidth = () => {
+            const firstCard = container.querySelector('.credly-card, .carousel-project-card');
+            if (!firstCard) return 320;
+            const style = window.getComputedStyle(container);
+            const gap = parseFloat(style.gap) || 24;
+            return firstCard.offsetWidth + gap;
+        };
+
+        // Position at the start of Set 1 (middle set)
+        let singleSetWidth = getSingleSetWidth();
+        container.style.scrollBehavior = 'auto';
+        container.scrollLeft = singleSetWidth;
+        container.style.scrollBehavior = 'smooth';
+
+        // Boundary adjustment
+        let scrollTimeout = null;
+        const adjustBoundary = () => {
+            singleSetWidth = getSingleSetWidth();
+            if (singleSetWidth <= 0) return;
+
+            if (container.scrollLeft >= singleSetWidth * 2 - 25) {
+                container.style.scrollBehavior = 'auto';
+                container.scrollLeft -= singleSetWidth;
+                container.style.scrollBehavior = 'smooth';
+            } else if (container.scrollLeft <= 25) {
+                container.style.scrollBehavior = 'auto';
+                container.scrollLeft += singleSetWidth;
+                container.style.scrollBehavior = 'smooth';
+            }
+        };
+
+        container.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(adjustBoundary, 120);
+        }, { passive: true });
+
+        if ('onscrollend' in window) {
+            container.addEventListener('scrollend', adjustBoundary);
+        }
+
+        const scrollNext = () => {
+            adjustBoundary();
+            const step = getStepWidth();
+            container.scrollBy({ left: step, behavior: 'smooth' });
+        };
+
+        const scrollPrev = () => {
+            adjustBoundary();
+            const step = getStepWidth();
+            container.scrollBy({ left: -step, behavior: 'smooth' });
+        };
+
+        let autoTimer = null;
+        const startAuto = () => {
+            stopAuto();
+            if (autoDelay > 0) {
+                autoTimer = setInterval(scrollNext, autoDelay);
+            }
+        };
+
+        const stopAuto = () => {
+            if (autoTimer) {
+                clearInterval(autoTimer);
+                autoTimer = null;
+            }
+        };
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                scrollNext();
+                stopAuto();
+                startAuto();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                scrollPrev();
+                stopAuto();
+                startAuto();
+            });
+        }
+
+        container.addEventListener('mouseenter', stopAuto);
+        container.addEventListener('mouseleave', startAuto);
+        container.addEventListener('touchstart', stopAuto, { passive: true });
+        container.addEventListener('touchend', startAuto, { passive: true });
+
+        // Start auto-scroll
+        startAuto();
     }
 
     async function loadCredlyBadges() {
@@ -200,79 +328,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 const badges = await response.json();
                 if (Array.isArray(badges) && badges.length > 0) {
                     renderCredlyBadges(badges);
+                    return;
                 }
             }
         } catch (err) {
             console.log('Credly badges loaded from static markup, dynamic sync ready:', err);
         }
+
+        // Fallback: initialize infinite carousel on static markup
+        setupInfiniteCarousel('credly-badges-grid', 'credly-prev', 'credly-next', 3800);
     }
 
     loadCredlyBadges();
 
-    // 7. Credly Carousel Controls & Auto-Scroll
-    const credlyPrev = document.getElementById('credly-prev');
-    const credlyNext = document.getElementById('credly-next');
-    let credlyAutoScrollTimer = null;
-
-    function scrollCredly(direction) {
-        if (!credlyContainer) return;
-        const cardWidth = 310;
-        const maxScroll = credlyContainer.scrollWidth - credlyContainer.clientWidth;
-
-        if (direction === 'next') {
-            if (credlyContainer.scrollLeft >= maxScroll - 20) {
-                credlyContainer.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                credlyContainer.scrollBy({ left: cardWidth, behavior: 'smooth' });
-            }
-        } else if (direction === 'prev') {
-            if (credlyContainer.scrollLeft <= 20) {
-                credlyContainer.scrollTo({ left: maxScroll, behavior: 'smooth' });
-            } else {
-                credlyContainer.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-            }
-        }
-    }
-
-    function startCredlyAutoScroll() {
-        stopCredlyAutoScroll();
-        credlyAutoScrollTimer = setInterval(() => {
-            scrollCredly('next');
-        }, 4000);
-    }
-
-    function stopCredlyAutoScroll() {
-        if (credlyAutoScrollTimer) {
-            clearInterval(credlyAutoScrollTimer);
-            credlyAutoScrollTimer = null;
-        }
-    }
-
-    if (credlyNext) {
-        credlyNext.addEventListener('click', () => {
-            scrollCredly('next');
-            stopCredlyAutoScroll();
-            startCredlyAutoScroll();
-        });
-    }
-
-    if (credlyPrev) {
-        credlyPrev.addEventListener('click', () => {
-            scrollCredly('prev');
-            stopCredlyAutoScroll();
-            startCredlyAutoScroll();
-        });
-    }
-
-    if (credlyContainer) {
-        credlyContainer.addEventListener('mouseenter', stopCredlyAutoScroll);
-        credlyContainer.addEventListener('mouseleave', startCredlyAutoScroll);
-        credlyContainer.addEventListener('touchstart', stopCredlyAutoScroll, { passive: true });
-        credlyContainer.addEventListener('touchend', startCredlyAutoScroll, { passive: true });
-        
-        // Start auto-scroll initially
-        startCredlyAutoScroll();
-    }
+    // Initialize Projects & Achievements Infinite Carousel
+    setupInfiniteCarousel('proyectos-track', 'proyectos-prev', 'proyectos-next', 4400);
 
     // Initialize Lucide Icons if available
     if (window.lucide) {

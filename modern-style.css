@@ -31,6 +31,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 85px;
     font-size: 16px;
     background-color: var(--bg-dark-base);
 }
@@ -163,17 +164,18 @@ p {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: var(--bg-dark-nav);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(6, 9, 19, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border-color);
     transition: var(--transition-smooth);
 }
 
 .cyber-header.scrolled {
-    padding: 0.5rem 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+    background: rgba(6, 9, 19, 0.98);
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
 }
 
 .nav-container {
@@ -191,6 +193,7 @@ p {
     font-size: 1.4rem;
     color: var(--text-main);
     font-family: var(--font-mono);
+    flex-shrink: 0;
 }
 
 .logo img, .logo svg {
@@ -213,17 +216,19 @@ p {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.15rem;
     align-items: center;
+    flex-wrap: nowrap;
 }
 
 .nav-link-cyber {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 500;
     color: var(--text-muted);
     font-family: var(--font-mono);
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
+    white-space: nowrap;
 }
 
 .nav-link-cyber::before {
@@ -1531,48 +1536,140 @@ p {
     font-family: var(--font-mono);
 }
 
-.credly-verify-btn {
+.badge-status-pill {
     width: 100%;
-    padding: 0.65rem 1rem;
+    padding: 0.6rem 1rem;
     font-family: var(--font-mono);
-    font-size: 0.82rem;
-    color: var(--color-primary);
-    background: rgba(0, 242, 254, 0.05);
-    border: 1px solid rgba(0, 242, 254, 0.25);
+    font-size: 0.8rem;
+    color: var(--color-secondary);
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.3);
     border-radius: 6px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    transition: var(--transition-smooth);
+    gap: 0.45rem;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.1);
 }
 
-.credly-verify-btn:hover {
-    color: #fff;
-    background: rgba(0, 242, 254, 0.2);
-    border-color: var(--color-primary);
-    box-shadow: 0 0 14px rgba(0, 242, 254, 0.35);
-    transform: translateY(-2px);
+/* Projects & Achievements Unified Carousel */
+.projects-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0 45px;
 }
 
-/* Merged Section Subsections */
-.subsection-cyber-title {
-    font-family: var(--font-mono);
-    font-size: 1.25rem;
-    margin-bottom: 1.8rem;
-    color: var(--color-primary);
+.carousel-project-card {
+    flex: 0 0 340px;
+    min-width: 340px;
+    max-width: 340px;
+    scroll-snap-align: start;
     display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    letter-spacing: 0.5px;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 450px;
+    padding: 2rem 1.8rem;
+    position: relative;
+    transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
-.subsection-cyber-title.secondary {
-    color: var(--color-secondary);
+.carousel-project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-primary);
+    box-shadow: var(--glow-shadow-hover);
+}
+
+.carousel-project-card.achievement-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.35);
+}
+
+.carousel-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    width: 100%;
+}
+
+.carousel-card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.carousel-card-tag.project {
+    color: var(--color-primary);
+    background: rgba(0, 242, 254, 0.08);
+    border: 1px solid rgba(0, 242, 254, 0.25);
+}
+
+.carousel-card-tag.achievement {
+    color: var(--color-accent);
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+.carousel-project-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.35;
+}
+
+.carousel-project-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.carousel-project-card .project-tech {
+    margin-bottom: 1.2rem;
+}
+
+.project-status.achievement-status {
+    background: rgba(139, 92, 246, 0.1);
+    color: #c084fc;
+    border-color: rgba(139, 92, 246, 0.3);
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(6, 9, 19, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 2.5rem 2rem;
+        gap: 1.5rem;
+        transition: var(--transition-smooth);
+        border-top: 1px solid var(--border-color);
+        z-index: 9999;
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .mobile-toggle {
+        display: block;
+    }
+
     .hero-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -1600,10 +1697,6 @@ p {
         order: -1;
     }
     
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -1611,29 +1704,30 @@ p {
 }
 
 @media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: var(--bg-dark-base);
-        flex-direction: column;
-        padding: 3rem 2rem;
-        gap: 2rem;
-        transition: var(--transition-smooth);
-        border-top: 1px solid var(--border-color);
-        z-index: 999;
+    .credly-carousel-wrapper,
+    .projects-carousel-wrapper {
+        padding: 0 35px;
     }
-    
-    .nav-menu.active {
-        left: 0;
+
+    .carousel-project-card {
+        flex: 0 0 285px;
+        min-width: 285px;
+        max-width: 285px;
+        min-height: 420px;
+        padding: 1.5rem;
     }
-    
-    .mobile-toggle {
-        display: block;
+
+    .credly-card {
+        flex: 0 0 260px;
+        min-width: 260px;
+        max-width: 260px;
     }
-    
+
+    .carousel-nav-btn {
+        width: 36px;
+        height: 36px;
+    }
+
     .hero-title {
         font-size: 2.8rem;
     }
