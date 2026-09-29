@@ -44,14 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 3. Active Link Scroll Spy
-    const sections = document.querySelectorAll('section, footer');
-    window.addEventListener('scroll', () => {
-        let current = '';
+    const sections = document.querySelectorAll('section[id], footer[id]');
+    const updateActiveNav = () => {
+        let current = 'home';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= (sectionTop - 120)) {
-                current = section.getAttribute('id');
+            if (window.scrollY >= (sectionTop - 150)) {
+                const id = section.getAttribute('id');
+                if (id) current = id;
             }
         });
 
@@ -61,7 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.classList.add('active');
             }
         });
-    });
+    };
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav();
 
     // 4. Matrix Decryption Effect
     const decryptElements = document.querySelectorAll('[data-decrypt]');
