@@ -135,6 +135,78 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // 6. Credly Badges Dynamic Loader
+    const credlyContainer = document.getElementById('credly-badges-grid');
+    const credlyCounter = document.getElementById('credly-badge-count');
+
+    function formatDate(dateString) {
+        try {
+            if (!dateString) return '';
+            const parts = dateString.split('-');
+            if (parts.length === 3) {
+                const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+                const m = parseInt(parts[1], 10) - 1;
+                return `Emitida: ${parseInt(parts[2], 10)} ${months[m] || parts[1]} ${parts[0]}`;
+            }
+            return `Emitida: ${dateString}`;
+        } catch (e) {
+            return `Emitida: ${dateString}`;
+        }
+    }
+
+    function renderCredlyBadges(badges) {
+        if (!credlyContainer) return;
+        
+        if (credlyCounter) {
+            credlyCounter.textContent = `${badges.length} Insignias Verificadas`;
+        }
+
+        credlyContainer.innerHTML = badges.map(badge => {
+            const dateStr = badge.issued_at_date ? formatDate(badge.issued_at_date) : '';
+            return `
+                <div class="credly-card glass-card">
+                    <div class="credly-badge-img-wrapper">
+                        <img src="${badge.image_url}" alt="${badge.name}" class="credly-badge-img" loading="lazy">
+                    </div>
+                    <div class="credly-card-content">
+                        <div class="credly-issuer">
+                            <i data-lucide="shield-check" style="width: 14px; height: 14px;"></i>
+                            <span>${badge.issuer_name || 'Credly Issuer'}</span>
+                        </div>
+                        <h4 class="credly-badge-name" title="${badge.name}">${badge.name}</h4>
+                        <div class="credly-date">${dateStr}</div>
+                    </div>
+                    <a href="${badge.badge_url}" target="_blank" rel="noopener" class="credly-verify-btn">
+                        Verificar en Credly
+                        <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
+                    </a>
+                </div>
+            `;
+        }).join('');
+
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+    }
+
+    async function loadCredlyBadges() {
+        if (!credlyContainer) return;
+
+        try {
+            const response = await fetch('credly-badges.json?v=' + Date.now());
+            if (response.ok) {
+                const badges = await response.json();
+                if (Array.isArray(badges) && badges.length > 0) {
+                    renderCredlyBadges(badges);
+                }
+            }
+        } catch (err) {
+            console.log('Credly badges loaded from static markup, dynamic sync ready:', err);
+        }
+    }
+
+    loadCredlyBadges();
+
     // Initialize Lucide Icons if available
     if (window.lucide) {
         window.lucide.createIcons();

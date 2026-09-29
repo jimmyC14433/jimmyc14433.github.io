@@ -1,0 +1,47 @@
+[
+    {
+        "id": "6d8e8c8a-5581-4f96-b207-d0d703359eaa",
+        "name": "AWS Knowledge: Security Champion - Training Badge",
+        "image_url": "https://images.credly.com/images/478cdcb9-9b92-4893-9c95-617ad0f28257/blob",
+        "issued_at_date": "2026-09-29",
+        "issuer_name": "Amazon Web Services Training and Certification",
+        "badge_url": "https://www.credly.com/badges/6d8e8c8a-5581-4f96-b207-d0d703359eaa",
+        "description": "Earners of this badge have developed knowledge of fundamental to advanced level content on key security concepts in the AWS cloud, which include AWS Shared Responsibility Model, AWS Identity & Access Management (IAM), AWS Key Management Service, Threat modeling, Security governance and more."
+    },
+    {
+        "id": "29b9ba23-057b-4d4a-a7f5-e42a15dcce04",
+        "name": "AWS Knowledge: Compute - Training Badge",
+        "image_url": "https://images.credly.com/images/c2d44375-6567-495a-b868-d17828c62872/blob",
+        "issued_at_date": "2026-09-27",
+        "issuer_name": "Amazon Web Services Training and Certification",
+        "badge_url": "https://www.credly.com/badges/29b9ba23-057b-4d4a-a7f5-e42a15dcce04",
+        "description": "Earners of this badge have developed knowledge of AWS Compute concepts and services with a focus on Amazon EC2."
+    },
+    {
+        "id": "a14144e7-2d62-4ff3-9a82-75c14a3e999e",
+        "name": "API Security in the World of DevSecOps (2 hours)",
+        "image_url": "https://images.credly.com/images/fb287d09-3194-42f1-81a7-313ab1a2af4a/blob",
+        "issued_at_date": "2026-09-22",
+        "issuer_name": "APIsec University",
+        "badge_url": "https://www.credly.com/badges/a14144e7-2d62-4ff3-9a82-75c14a3e999e",
+        "description": "API Security Meets DevSecOps—From Culture to Code This course bridges the gap between DevSecOps principles and real-world API security. Explore what DevSecOps really means, how it evolves from DevOps, and why API security must be built in—not bolted on. Ideal for teams embracing secure development from planning to production.(Earn 2 CPEs)"
+    },
+    {
+        "id": "d3631163-e461-44d0-a0d7-235c88193579",
+        "name": "Getting Started in API Pen-Testing (1 hour)",
+        "image_url": "https://images.credly.com/images/9781310b-49e7-4564-a7ca-7a53784bbf1e/blob",
+        "issued_at_date": "2026-09-22",
+        "issuer_name": "APIsec University",
+        "badge_url": "https://www.credly.com/badges/d3631163-e461-44d0-a0d7-235c88193579",
+        "description": "In Getting Started in API Pen-Testing, course instructor, Teresa Pereira, covers primary attack vectors, penetration testing methodologies, and a shift-left approach. This course includes a pre-penetration testing checklist and practical testing techniques focusing on OWASP API top 10. The course also provides time-saving hacking tips, AI-based tools, and best practices for documenting findings."
+    },
+    {
+        "id": "92df73f0-a260-4ba7-a07b-483d245341e3",
+        "name": "API Security Fundamentals '25 (2 hours)",
+        "image_url": "https://images.credly.com/images/d7840f4d-0217-4aa4-8cf4-e8bea30aef52/blob",
+        "issued_at_date": "2026-09-21",
+        "issuer_name": "APIsec University",
+        "badge_url": "https://www.credly.com/badges/92df73f0-a260-4ba7-a07b-483d245341e3",
+        "description": "The API Security Fundamentals course covers the core threats to APIs and challenges to prevent breach. The course includes modules on real-world API breaches, the OWASP API Security Top 10, the 3 Pillars of API Security (governance, testing and monitoring), and the application security technology landscape. The course provides strategic advice for developing secure API programs, and includes specific best practices for security and development teams."
+    }
+]

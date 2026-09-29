@@ -1,0 +1,37 @@
+name: Update Credly Badges
+
+on:
+  schedule:
+    # Runs every day at 06:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allows manual execution from GitHub anytime
+
+permissions:
+  contents: write
+
+jobs:
+  update-badges:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch Credly Badges
+        run: node update-credly.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add credly-badges.json
+          if git diff --staged --quiet; then
+            echo "No new Credly badges detected."
+          else
+            git commit -m "Auto-update Credly badges [skip ci]"
+            git push
+          fi
