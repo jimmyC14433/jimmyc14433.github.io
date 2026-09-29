@@ -209,6 +209,71 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadCredlyBadges();
 
+    // 7. Credly Carousel Controls & Auto-Scroll
+    const credlyPrev = document.getElementById('credly-prev');
+    const credlyNext = document.getElementById('credly-next');
+    let credlyAutoScrollTimer = null;
+
+    function scrollCredly(direction) {
+        if (!credlyContainer) return;
+        const cardWidth = 310;
+        const maxScroll = credlyContainer.scrollWidth - credlyContainer.clientWidth;
+
+        if (direction === 'next') {
+            if (credlyContainer.scrollLeft >= maxScroll - 20) {
+                credlyContainer.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                credlyContainer.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            }
+        } else if (direction === 'prev') {
+            if (credlyContainer.scrollLeft <= 20) {
+                credlyContainer.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            } else {
+                credlyContainer.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            }
+        }
+    }
+
+    function startCredlyAutoScroll() {
+        stopCredlyAutoScroll();
+        credlyAutoScrollTimer = setInterval(() => {
+            scrollCredly('next');
+        }, 4000);
+    }
+
+    function stopCredlyAutoScroll() {
+        if (credlyAutoScrollTimer) {
+            clearInterval(credlyAutoScrollTimer);
+            credlyAutoScrollTimer = null;
+        }
+    }
+
+    if (credlyNext) {
+        credlyNext.addEventListener('click', () => {
+            scrollCredly('next');
+            stopCredlyAutoScroll();
+            startCredlyAutoScroll();
+        });
+    }
+
+    if (credlyPrev) {
+        credlyPrev.addEventListener('click', () => {
+            scrollCredly('prev');
+            stopCredlyAutoScroll();
+            startCredlyAutoScroll();
+        });
+    }
+
+    if (credlyContainer) {
+        credlyContainer.addEventListener('mouseenter', stopCredlyAutoScroll);
+        credlyContainer.addEventListener('mouseleave', startCredlyAutoScroll);
+        credlyContainer.addEventListener('touchstart', stopCredlyAutoScroll, { passive: true });
+        credlyContainer.addEventListener('touchend', startCredlyAutoScroll, { passive: true });
+        
+        // Start auto-scroll initially
+        startCredlyAutoScroll();
+    }
+
     // Initialize Lucide Icons if available
     if (window.lucide) {
         window.lucide.createIcons();
