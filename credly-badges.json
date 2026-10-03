@@ -1,5 +1,14 @@
 [
     {
+        "id": "86a9ea77-b75c-4562-8557-5898aadef723",
+        "name": "API Penetration Testing (12 hours)",
+        "image_url": "https://images.credly.com/images/44a5fe44-52e6-45c2-ae9a-41fd9183c81d/image.png",
+        "issued_at_date": "2026-10-03",
+        "issuer_name": "APIsec University",
+        "badge_url": "https://www.credly.com/badges/86a9ea77-b75c-4562-8557-5898aadef723",
+        "description": "The API Penetration Testing course provides hands-on instruction on testing APIs for security flaws. Participants in the course have learned specific, detailed tools and techniques for analyzing, testing and identifying API vulnerabilities. The skills learned include API reconnaissance, scanning, auditing JSON Web Tokens, performing authentication and authorization attacks, and exploiting other common API weaknesses like injection, mass assignment, and server-side request forgery."
+    },
+    {
         "id": "6d8e8c8a-5581-4f96-b207-d0d703359eaa",
         "name": "AWS Knowledge: Security Champion - Training Badge",
         "image_url": "https://images.credly.com/images/478cdcb9-9b92-4893-9c95-617ad0f28257/blob",
