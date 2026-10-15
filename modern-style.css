@@ -296,6 +296,75 @@ p {
     border-color: var(--color-primary);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-shrink: 0;
+}
+
+.cyber-lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    border-radius: 20px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    user-select: none;
+    outline: none;
+}
+
+.cyber-lang-toggle:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+    color: var(--text-main);
+}
+
+.lang-icon {
+    width: 15px;
+    height: 15px;
+    stroke: var(--color-primary);
+    transition: transform 0.4s ease;
+}
+
+.cyber-lang-toggle:hover .lang-icon {
+    transform: rotate(30deg);
+}
+
+.lang-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.lang-code {
+    color: var(--text-muted);
+    transition: var(--transition-smooth);
+    padding: 0.1rem 0.2rem;
+    border-radius: 3px;
+}
+
+.lang-code.active {
+    color: var(--color-primary);
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+    font-weight: 700;
+}
+
+.lang-divider {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.75rem;
+}
+
 .mobile-toggle {
     display: none;
     background: none;
@@ -1749,3 +1818,53 @@ p {
         margin-top: 0.4rem;
     }
 }
+
+/* ============================================================
+   Google Translate Complete UI Neutralization & Reset
+   ============================================================ */
+body > .skiptranslate,
+iframe.skiptranslate,
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-te-menu-frame,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9od-xl07Ob-OEVmcd {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    pointer-events: none !important;
+}
+
+body {
+    top: 0px !important;
+    position: static !important;
+}
+
+#google_translate_element {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover {
+    display: none !important;
+}
+
+.goog-text-highlight {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+font[style*="vertical-align: inherit"] {
+    vertical-align: inherit !important;
+}
+

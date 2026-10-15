@@ -344,6 +344,158 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Projects & Achievements Infinite Carousel
     setupInfiniteCarousel('proyectos-track', 'proyectos-prev', 'proyectos-next', 4400);
 
+    // 8. Cyber Language Translation & GeoIP Controller
+    (function initLanguageSystem() {
+        const SPANISH_COUNTRIES = [
+            'AR', 'BO', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'ES',
+            'GQ', 'GT', 'HN', 'MX', 'NI', 'PA', 'PE', 'PR', 'PY',
+            'SV', 'UY', 'VE'
+        ];
+
+        const langToggleBtn = document.getElementById('cyber-lang-toggle');
+        const langEsLabel = document.getElementById('lang-es');
+        const langEnLabel = document.getElementById('lang-en');
+
+        function setGoogleTransCookie(val) {
+            document.cookie = 'googtrans=' + val + '; path=/;';
+            const hostname = window.location.hostname;
+            if (hostname && hostname.indexOf('.') !== -1) {
+                document.cookie = 'googtrans=' + val + '; path=/; domain=.' + hostname + ';';
+            }
+        }
+
+        function clearGoogleTransCookie() {
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            const hostname = window.location.hostname;
+            if (hostname && hostname.indexOf('.') !== -1) {
+                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + hostname + ';';
+            }
+        }
+
+        function updateToggleUI(currentLang) {
+            if (!langEsLabel || !langEnLabel) return;
+            if (currentLang === 'en') {
+                langEsLabel.classList.remove('active');
+                langEnLabel.classList.add('active');
+            } else {
+                langEsLabel.classList.add('active');
+                langEnLabel.classList.remove('active');
+            }
+        }
+
+        function triggerGoogleTranslate(targetLang) {
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = targetLang;
+                select.dispatchEvent(new Event('change'));
+                return true;
+            }
+            return false;
+        }
+
+        function applyTranslation(targetLang, isUserAction = false) {
+            if (targetLang === 'en') {
+                setGoogleTransCookie('/es/en');
+                localStorage.setItem('user_language', 'en');
+                updateToggleUI('en');
+
+                if (!triggerGoogleTranslate('en')) {
+                    let attempts = 0;
+                    const interval = setInterval(() => {
+                        attempts++;
+                        if (triggerGoogleTranslate('en') || attempts > 15) {
+                            clearInterval(interval);
+                            if (attempts > 15 && isUserAction) {
+                                window.location.reload();
+                            }
+                        }
+                    }, 200);
+                }
+            } else {
+                clearGoogleTransCookie();
+                setGoogleTransCookie('/es/es');
+                localStorage.setItem('user_language', 'es');
+                updateToggleUI('es');
+
+                if (isUserAction) {
+                    window.location.reload();
+                } else {
+                    triggerGoogleTranslate('es');
+                }
+            }
+        }
+
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', () => {
+                const current = localStorage.getItem('user_language') || 'es';
+                const next = current === 'en' ? 'es' : 'en';
+                applyTranslation(next, true);
+            });
+        }
+
+        async function detectGeoLanguage() {
+            const saved = localStorage.getItem('user_language');
+            if (saved) {
+                updateToggleUI(saved);
+                if (saved === 'en') {
+                    applyTranslation('en', false);
+                }
+                return;
+            }
+
+            let countryCode = null;
+
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 2000);
+                const res = await fetch('https://api.country.is/', { signal: controller.signal });
+                clearTimeout(timeoutId);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.country) {
+                        countryCode = data.country.toUpperCase();
+                    }
+                }
+            } catch (e) {
+                console.warn('Primary GeoIP lookup skipped:', e);
+            }
+
+            if (!countryCode) {
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 2000);
+                    const res = await fetch('https://ipwho.is/', { signal: controller.signal });
+                    clearTimeout(timeoutId);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data && data.country_code) {
+                            countryCode = data.country_code.toUpperCase();
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Secondary GeoIP lookup skipped:', e);
+                }
+            }
+
+            let initialLang = 'es';
+            if (countryCode) {
+                initialLang = SPANISH_COUNTRIES.includes(countryCode) ? 'es' : 'en';
+            } else {
+                const browserLang = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+                initialLang = browserLang.startsWith('es') ? 'es' : 'en';
+            }
+
+            localStorage.setItem('user_language', initialLang);
+            updateToggleUI(initialLang);
+
+            if (initialLang === 'en') {
+                applyTranslation('en', false);
+            }
+        }
+
+        detectGeoLanguage();
+    })();
+
     // Initialize Lucide Icons if available
     if (window.lucide) {
         window.lucide.createIcons();

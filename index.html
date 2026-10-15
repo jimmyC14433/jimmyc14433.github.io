@@ -11,24 +11,38 @@
     <meta name="author" content="Yimy Cristancho">
 
     <!-- Google Fonts & Stylesheets -->
-    <link rel="stylesheet" href="modern-style.css?v=1.7">
+    <link rel="stylesheet" href="modern-style.css?v=1.8">
     
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Immediate Language Detection & Cookie Sync before render -->
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('user_language');
+                var host = window.location.hostname;
+                var isDomain = host && host.indexOf('.') !== -1;
+                if (saved === 'en') {
+                    document.cookie = "googtrans=/es/en; path=/;";
+                    if (isDomain) document.cookie = "googtrans=/es/en; path=/; domain=." + host + ";";
+                } else if (saved === 'es') {
+                    document.cookie = "googtrans=/es/es; path=/;";
+                    if (isDomain) document.cookie = "googtrans=/es/es; path=/; domain=." + host + ";";
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
 <body class="cyber-body">
 
     <!-- Sticky Navigation -->
     <header class="cyber-header" id="cyber-header">
         <div class="container nav-container">
-            <a href="#home" class="logo">
+            <a href="#home" class="logo notranslate">
                 <i data-lucide="shield"></i>
                 <span>YC</span>
             </a>
-            
-            <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú">
-                <i data-lucide="menu"></i>
-            </button>
 
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link-cyber active">Inicio</a></li>
@@ -37,9 +51,25 @@
                 <li><a href="#estudios" class="nav-link-cyber">Estudios</a></li>
                 <li><a href="#insignias" class="nav-link-cyber">Insignias</a></li>
                 <li><a href="#habilidades" class="nav-link-cyber">Habilidades</a></li>
-                <li><a href="#proyectos" class="nav-link-cyber">Proyectos</a></li>
+                <li><a href="#proyectos" class="nav-link-cyber">Proyectos & Logros</a></li>
                 <li><a href="#contacto" class="nav-link-cyber">Contacto</a></li>
             </ul>
+
+            <div class="nav-actions">
+                <!-- Cyber Language Switcher -->
+                <button class="cyber-lang-toggle notranslate" id="cyber-lang-toggle" aria-label="Cambiar idioma / Switch language" title="Cambiar idioma (ES / EN)">
+                    <i data-lucide="languages" class="lang-icon"></i>
+                    <span class="lang-pill">
+                        <span class="lang-code active" id="lang-es">ES</span>
+                        <span class="lang-divider">/</span>
+                        <span class="lang-code" id="lang-en">EN</span>
+                    </span>
+                </button>
+
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -57,7 +87,7 @@
                         Especialista en Seguridad Informática enfocado en el diseño e implementación de estrategias para robustecer, mitigar riesgos y garantizar la resiliencia de infraestructuras críticas.
                     </p>
                     
-                    <div class="hero-tags">
+                    <div class="hero-tags notranslate">
                         <span class="hero-tag">#Cybersecurity</span>
                         <span class="hero-tag">#Pentesting</span>
                         <span class="hero-tag">#AWSCloud</span>
@@ -78,7 +108,7 @@
                 </div>
 
                 <div class="hero-visual">
-                    <div class="terminal-mockup">
+                    <div class="terminal-mockup notranslate">
                         <div class="terminal-header">
                             <div class="terminal-dots">
                                 <span class="terminal-dot red"></span>
@@ -759,6 +789,19 @@ Diseño, implementación y auditoría del Sistema de Gestión de Seguridad de la
         <i data-lucide="check-circle-2"></i>
         <span id="toast-text">Copiado al portapapeles</span>
     </div>
+
+    <!-- Google Translate Element Container (Invisible) -->
+    <div id="google_translate_element" style="display: none !important;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,es',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <!-- Main JavaScript file -->
     <script src="modern-script.js" defer></script>
