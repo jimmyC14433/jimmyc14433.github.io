@@ -1,5 +1,14 @@
 [
     {
+        "id": "21d23f17-7307-4f62-aaf1-a072a691c1d7",
+        "name": "AWS Knowledge: Serverless - Training Badge",
+        "image_url": "https://images.credly.com/images/0c20a5b7-b4e9-4c2f-8b68-342e00a85e05/blob",
+        "issued_at_date": "2026-10-16",
+        "issuer_name": "Amazon Web Services Training and Certification",
+        "badge_url": "https://www.credly.com/badges/21d23f17-7307-4f62-aaf1-a072a691c1d7",
+        "description": "Earners of this badge have developed technical skills and knowledge of AWS serverless concepts and services with a focus on AWS Lambda and Amazon API Gateway."
+    },
+    {
         "id": "86a9ea77-b75c-4562-8557-5898aadef723",
         "name": "API Penetration Testing (12 hours)",
         "image_url": "https://images.credly.com/images/44a5fe44-52e6-45c2-ae9a-41fd9183c81d/image.png",
